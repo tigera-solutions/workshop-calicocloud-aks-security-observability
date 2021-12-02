@@ -63,6 +63,7 @@ kubectl get nodes
 NAME                                STATUS   ROLES   AGE     VERSION
 aks-agentpool-38582030-vmss000000   Ready    agent   6m22s   v1.21.2
 aks-agentpool-38582030-vmss000001   Ready    agent   6m23s   v1.21.2
+aks-agentpool-38582030-vmss000002   Ready    agent   6m23s   v1.21.2
 ```
 
 ## Login to Calico Cloud and connect cluster with AKS curl bash script.
@@ -76,11 +77,24 @@ kubectl get tigerastatus
 
 ## Deploy demo apps
 
+Deploy a Ubuntu pod that we can use to test connectivity in the cluster
+
 ```
 kubectl apply -f demo/apps/shell
+```
+
+Deploy Wordpress into it's own namespace
+
+```
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm install wordpress -f demo/apps/wordpress/values.yaml bitnami/wordpress -n wordpress --create-namespace
 kubectl get pods -n wordpress -w
+```
+
+Get the Wordpress LB public ip address
+
+```
+kubectl get svc -n wordpress
 ```
 
 ## Configure AKS cluster Calico settings

@@ -6,7 +6,7 @@ If you're looking for general docs for Calico, we recommend you start [here](htt
 
 ## Prerequisites
 
-Ensure the make, jq, helm, and azure cli are installed and you have an Azure account with appropriate permissions.
+Ensure the make, jq, helm, and azure-cli are installed and you have an Azure account with appropriate permissions.
 
 ## Setup
 

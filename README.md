@@ -85,11 +85,15 @@ kubectl get pods -n wordpress -w
 
 ## Configure AKS cluster Calico settings
 
+Apply FelixConfiguration to setup logging settings
+
 ```
 kubectl apply -f demo/felix-config
 ```
 
 ## Compliance and reporting
+
+Apply Calico Cloud compliance reports to generate reports every 10 minutes
 
 ```
 kubectl apply -f demo/compliance-reports
@@ -99,9 +103,17 @@ Live demo
 
 ## Pod-based workload access controls
 
+Setup our demo workload access control scenario to secure the demo apps
+
 ```
 kubectl apply -R -f demo/tiers/
 kubectl apply -R -f demo/network-policy
+```
+
+Get your public ip address
+
+```
+curl http://ifconfig.co
 ```
 
 Live demo

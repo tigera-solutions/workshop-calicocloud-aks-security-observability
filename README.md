@@ -1,5 +1,9 @@
 # workshop-calicocloud-aks-security-observability
 
+This content was built for free training workshops. 
+
+If you're looking for general docs for Calico, we recommend you start [here](https://docs.tigera.io/)
+
 ## Prerequisites
 
 Ensure the make, jq, helm, and azure cli are installed and you have an Azure account with appropriate permissions.

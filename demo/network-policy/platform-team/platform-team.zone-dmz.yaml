@@ -1,0 +1,30 @@
+apiVersion: projectcalico.org/v3
+kind: NetworkPolicy
+metadata:
+  name: platform-team.zone-dmz
+  namespace: wordpress
+spec:
+  tier: platform-team
+  order: 10
+  selector: zone == "dmz"
+  serviceAccountSelector: ''
+  ingress:
+    - action: Allow
+      source:
+        selector: zone == "untrusted"
+        namespaceSelector: global()
+      destination: {}
+    - action: Allow
+      source:
+        selector: zone == "dmz"
+      destination: {}
+    - action: Deny
+      source: {}
+      destination: {}
+  egress:
+    - action: Pass
+      source: {}
+      destination: {}
+  types:
+    - Ingress
+    - Egress

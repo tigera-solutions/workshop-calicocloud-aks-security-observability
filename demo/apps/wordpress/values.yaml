@@ -1,0 +1,17 @@
+wordpressUsername: admin
+wordpressPassword: mcd0n@lds!!
+persistence:
+  enabled: false
+
+mariadb:
+  auth:
+    rootPassword: mcd0n@lds!!
+  primary:
+    persistence:
+      enabled: false
+
+service:
+  externalTrafficPolicy: Local
+
+podLabels:
+  zone: dmz

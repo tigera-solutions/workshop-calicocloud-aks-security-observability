@@ -1,0 +1,24 @@
+apiVersion: projectcalico.org/v3
+kind: GlobalNetworkPolicy
+metadata:
+  name: security-team.deny-threatfeed-matches
+spec:
+  tier: security-team
+  order: 10
+  selector: all()
+  namespaceSelector: ''
+  serviceAccountSelector: ''
+  egress:
+    - action: Deny
+      source: {}
+      destination:
+        selector: threatfeed == "feodo"
+    - action: Deny
+      source: {}
+      destination:
+        selector: threatfeed == "snort-ip-block-list"
+  doNotTrack: false
+  applyOnForward: false
+  preDNAT: false
+  types:
+    - Egress

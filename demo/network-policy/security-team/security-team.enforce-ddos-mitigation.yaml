@@ -1,0 +1,20 @@
+apiVersion: projectcalico.org/v3
+kind: GlobalNetworkPolicy
+metadata:
+  name: security-team.enforce-ddos-mitigation
+spec:
+  tier: security-team
+  order: 5
+  selector: projectcalico.org/created-by == "calico-kube-controllers"
+  namespaceSelector: ''
+  serviceAccountSelector: ''
+  ingress:
+    - action: Deny
+      source:
+        selector: ddos-deny-list == "true"
+      destination: {}
+  doNotTrack: true
+  applyOnForward: true
+  preDNAT: false
+  types:
+    - Ingress

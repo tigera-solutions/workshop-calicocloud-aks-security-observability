@@ -1,0 +1,52 @@
+---
+apiVersion: projectcalico.org/v3
+kind: FelixConfiguration
+metadata:
+  name: default
+spec:
+  flowLogsFlushInterval: 15s
+  flowLogsFileAggregationKindForAllowed: 1
+  flowLogsCollectTcpStats: true
+  flowLogsEnableHostEndpoint: true
+  dnsLogsFlushInterval: 15s
+  egressIPSupport: Disabled
+  logSeverityScreen: Info
+  captureRotationSeconds: 3600
+  l7LogsFlushInterval: 15s
+  l7LogsFileAggregationHTTPHeaderInfo: IncludeL7HTTPHeaderInfo
+  policySyncPathPrefix: /var/run/nodeagent
+  failsafeInboundHostPorts:
+  - protocol: tcp
+    net: 0.0.0.0/0
+    port: 22
+  - protocol: tcp
+    net: 0.0.0.0/0
+    port: 68
+  - protocol: tcp
+    net: 0.0.0.0/0
+    port: 179
+  - protocol: tcp
+    net: 0.0.0.0/0
+    port: 2379
+  - protocol: tcp
+    net: 0.0.0.0/0
+    port: 6443
+  failsafeOutboundHostPorts:
+  - protocol: udp
+    net: 0.0.0.0/0
+    port: 53
+  - protocol: tcp
+    net: 0.0.0.0/0
+    port: 67
+  - protocol: tcp
+    net: 0.0.0.0/0
+    port: 179
+  - protocol: tcp
+    net: 0.0.0.0/0
+    port: 2379
+  - protocol: tcp
+    net: 0.0.0.0/0
+    port: 2380
+  - protocol: tcp
+    net: 0.0.0.0/0
+    port: 6443

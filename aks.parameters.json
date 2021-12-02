@@ -1,0 +1,30 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "clusterName": {
+            "value": "demo"
+        },
+        "serviceCidr": {
+            "value": "10.1.0.0/16"
+        },
+        "dnsServiceIP": {
+            "value": "10.1.0.10"
+        },
+        "agentVMSize": {
+            "value": "Standard_D8s_v3"
+        },
+        "agentCount": {
+            "value": 3
+        },
+        "kubernetesVersion": {
+            "value": "1.21.2"
+        },
+        "osDiskSizeGB": {
+            "value": 50
+        },
+        "sshRSAPublicKey": {
+            "value": ""
+        }
+    }
+}

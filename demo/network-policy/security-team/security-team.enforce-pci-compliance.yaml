@@ -1,0 +1,36 @@
+apiVersion: projectcalico.org/v3
+kind: GlobalNetworkPolicy
+metadata:
+  name: security-team.enforce-pci-compliance
+spec:
+  tier: security-team
+  order: 15
+  selector: all()
+  namespaceSelector: ''
+  serviceAccountSelector: ''
+  ingress:
+    - action: Deny
+      source:
+        serviceAccounts:
+          names: []
+          selector: PCI != "true"
+      destination:
+        serviceAccounts:
+          names: []
+          selector: PCI == "true"
+  egress:
+    - action: Deny
+      source:
+        serviceAccounts:
+          names: []
+          selector: PCI == "true"
+      destination:
+        serviceAccounts:
+          names: []
+          selector: PCI != "true"
+  doNotTrack: false
+  applyOnForward: false
+  preDNAT: false
+  types:
+    - Ingress
+    - Egress
